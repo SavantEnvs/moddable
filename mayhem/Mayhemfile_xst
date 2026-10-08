@@ -1,0 +1,11 @@
+project: savantenvs/moddable
+target: xst
+duration: 300
+
+cmds:
+  - cmd: /mayhem/xst
+    libfuzzer: true
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xst/testsuite

@@ -1,0 +1,9 @@
+# BuildKit uses this file (not the root .dockerignore) for `-f mayhem/Dockerfile`.
+# Keep the FULL repo incl. .git and upstream's build/makefiles + build/devices sources;
+# drop only local build outputs (upstream .gitignore: build/bin/, build/tmp/) and cruft.
+build/bin/
+build/tmp/
+**/__pycache__/
+.DS_Store
+*.swp
+*~

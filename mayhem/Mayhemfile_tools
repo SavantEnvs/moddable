@@ -1,0 +1,18 @@
+project: savantenvs/moddable
+target: tools
+duration: 300
+
+cmds:
+  - cmd: /mayhem/moddable-tools bles2gatt @@
+    # Mayhem's smoke test reported "Your target runs but does not seem to use the file input" on runs #1-#2
+    # although strace shows the tool opens and reads @@ (realpath, then fopen). Both values below are what
+    # Mayhem's event log proposed: auto-resolution picked cmd.timeout: 10, and the file-input error asks
+    # for MFUZZ_COMPAT_LEVEL "1".
+    timeout: 10
+    env:
+      MODDABLE: /mayhem
+      MFUZZ_COMPAT_LEVEL: '1'
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/tools/testsuite
